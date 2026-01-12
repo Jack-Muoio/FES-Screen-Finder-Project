@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Logs
+npm-debug.log*
+
+# Build / framework output (just in case)
+dist/
+build/
+.next/
+
+# Environment files
+.env
