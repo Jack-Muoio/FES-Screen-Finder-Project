@@ -13,28 +13,23 @@ const dropdown = document.querySelector(".dropdown");
 const searchInfoText = document.querySelector(".search-info .black-txt");
 
 
-let results = []; // store ALL results
+let results = []; 
 
-// Trigger search on Enter
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     fetchMovies(searchInput.value.trim());
   }
 });
 
-// Trigger sort/filter when dropdown changes
 dropdown.addEventListener("change", () => {
   applyFilterAndSort();
 });
 
-// Fetch all pages of search results
 async function fetchMovies(query) {
   if (!query) return;
 
-  // Update heading immediately
   searchInfoText.innerHTML = `Search results for "<span class="search-query">${query}</span>"`;
 
-  // Show skeleton loader
   contentEl.innerHTML = loadingHTML();
 
   try {
@@ -48,7 +43,6 @@ async function fetchMovies(query) {
       );
       const data = await res.json();
 
-      // 🚫 No results
       if (data.Response === "False") {
         setTimeout(() => {
           contentEl.innerHTML = "<p>No results found</p>";
@@ -63,7 +57,6 @@ async function fetchMovies(query) {
 
     } while (allResults.length < totalResults && page <= 10);
 
-    // Fetch full details for all results
     const detailedResults = await Promise.all(
       allResults.map(async (item) => {
         const res = await fetch(
@@ -73,10 +66,9 @@ async function fetchMovies(query) {
       })
     );
 
-    // After skeleton delay, store results & render
     setTimeout(() => {
       results = detailedResults;
-      applyFilterAndSort(); // respects current dropdown selection
+      applyFilterAndSort(); 
     }, 2000);
 
   } catch (err) {
@@ -89,17 +81,14 @@ async function fetchMovies(query) {
 }
 
 
-// Apply filter/sort and then display top 6
 function applyFilterAndSort() {
   let filtered = [...results];
   const value = dropdown.value;
 
-  // Filter by type (only movie and series now)
   if (["movie", "series"].includes(value)) {
     filtered = filtered.filter((item) => item.Type === value);
   }
 
-  // Sort by year
   if (value === "NEW_TO_OLD") {
     filtered.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
   }
@@ -107,11 +96,9 @@ function applyFilterAndSort() {
     filtered.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
   }
 
-  // Show top 6 after filtering/sorting
   renderResults(filtered.slice(0, 6));
 }
 
-// Render the search results
 function renderResults(items) {
   if (!items.length) {
     contentEl.innerHTML = "<p>No matching results</p>";
@@ -143,7 +130,6 @@ function movieCard(movie) {
 
 console.log(`Movie: "${movie.Title}" - Poster used: ${poster}`);
 
-// Skeleton/loading HTML
 function loadingHTML() {
   return `
     <div class="loading-state flex justify-center">
