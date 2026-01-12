@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <div id="app"> 
+        <div class="flex flex-col">
+            <div class="navbar flex flex-col">
+                <div class="content-wrapper content-wrapper-1 flex justify-between align-center" style="flex-direction: row; z-index: 1005;">
+                    <div class="logo-wrapper">
+                        <img src="./assets/JS Project Logo.png" alt="Screen Finder Logo" class="logo">
+                        <div class="logo-name">Screen Finder</div>
+                    </div>
+                    <div class="links flex align-center justify-between">
+                        <a href="/" class="link router-link-active link__hover-effect">Home</a>
+                        <a href="/" class="link router-link-active router-link-exact-active link__hover-effect">Find Content</a>
+                        <button class="btn-contact" onclick="notImplemented(event)">Contact</button>       
+                    </div>
+                    <button class="btn__menu" onclick="openMenu()">
+                      <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="menu__backdrop" style="visibility: hidden;">
+                        <button class="btn__menu btn__menu--close" onclick="closeMenu()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <ul class="menu__links">
+                            <li class="menu__list">
+                                <a href="#" class="menu__link" onclick="closeMenu()">Home</a>
+                            </li>
+                            <li class="menu__list">
+                                <a href="#" class="menu__link" onclick="closeMenu()">Find Conent</a>
+                            </li>
+                            <li class="menu__list">
+                                <a class="menu__link" onclick="notImplemented(event)">Contacts</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-wrapper content-wrapper-1 flex-col align-center" style="margin-top: 40px;">
+                    <h1 class="search-header">Browse our content</h1>
+                    <div class="input-wrap">
+                        <input type="text" class="search" placeholder="Search by Title">
+                        <div class="search-wrapper flex justify-center align-center">
+                            <i class="fa-solid fa-magnifying-glass fa-magnifying-glass-inline"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+            </div>
+            <div id="search">
+                <div id="filter" class="content-wrapper justify-between">
+                    <h1 class="search-info">
+                        <span class="black-txt">Search results:</span>
+                    </h1>
+                    <select name="" class="dropdown">
+                        <option value="" disabled selected>Sort</option>
+                        <option value="NEW_TO_OLD">Newest to oldest</option>
+                        <option value="OLD_TO_NEW">Oldest to newest</option>
+                        <option value="movie">Movie</option>
+                        <option value="series">Series</option>
+                    </select>
+                </div>
+                <div id="content">
+                    <div class="content-wrapper content-wrapper-3">
+                       <img src="./assets/retro-cinema-movie-theater-building-line-art-facade-modern-city-background-exterior-illustration-culture-348089247.webp" class="search-background">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
