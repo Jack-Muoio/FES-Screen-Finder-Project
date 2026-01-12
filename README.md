@@ -16,9 +16,5 @@ A responsive web application that allows users to browse and filter movie and TV
 - JavaScript
 - Font Awesome
 
-## How to Run
-1. Clone the repo
-2. Open `index.html` in a browser
-
 ## Status
 Some features are still in progress (placeholders included).
