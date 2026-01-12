@@ -127,9 +127,6 @@ function movieCard(movie) {
   `;
 }
 
-
-console.log(`Movie: "${movie.Title}" - Poster used: ${poster}`);
-
 function loadingHTML() {
   return `
     <div class="loading-state flex justify-center">
